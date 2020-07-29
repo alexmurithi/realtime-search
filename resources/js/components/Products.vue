@@ -1,7 +1,7 @@
 <template>
   
             <div class="row">
-                <div class="col-md-4 col-sm-6" v-for="product in products">
+                <div class="col-md-4 col-sm-6" v-for="product in groupedProducts">
                     <div class="card my-2 border-0 shadow-sm">
                         <div class="card-header bg-white ">
                             <h5 class="text-primary">{{product.name}}</h5>
@@ -17,6 +17,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         
 </template>
@@ -34,9 +35,9 @@ export default {
        
    },
    computed:{
-    //    groupedProducts() {
-    //                 return _.chunk(this.$store.getters.products, 4);
-    //             },
+       groupedProducts() {
+                    return _.chunk(this.$store.getters.products, 4);
+                },
                 ...mapGetters([
                     'products'
                 ])

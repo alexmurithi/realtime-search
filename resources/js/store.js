@@ -14,12 +14,16 @@ export const store  = new Vuex.Store({
       }
     },
     mutations:{
+        /* gets the results from our search query and updates our state.products with the new 
+            products/results gotten from the query */
         SET_PRODUCTS:(state,products)=>{
            state.products=products
+          
         }
 
     }, 
     actions:{
+        /* executes our search query in asyschrounous manner*/
         SEARCH_PRODUCTS:({commit},query)=>{
            let params ={query};
 
@@ -33,8 +37,10 @@ export const store  = new Vuex.Store({
              })
         },
         GET_PRODUCTS:({commit})=>{
+            //returns all products from our database in asyschronous manner//
             Axios.get(`/api/products`)
               .then(res=>{
+                 
                   commit('SET_PRODUCTS',res.data)
               })
               .catch(err=>{
